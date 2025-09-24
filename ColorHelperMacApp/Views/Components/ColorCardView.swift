@@ -24,7 +24,7 @@ struct ColorCardView: View {
         VStack(spacing: 6) {
             RoundedRectangle(cornerRadius: 12)
                 .fill(colorItem.swiftUIColor)
-                .frame(width: 80, height: 50)
+                .frame(height: 60)
                 .overlay(
                     RoundedRectangle(cornerRadius: 12)
                         .stroke(Color.black.opacity(0.1), lineWidth: 1)
@@ -34,16 +34,16 @@ struct ColorCardView: View {
             VStack(spacing: 2) {
                 Text(colorItem.hexCode.uppercased())
                     .font(.system(size: 10, weight: .semibold, design: .monospaced))
-                    .foregroundColor(.primary)
+                    .foregroundColor(Color(.sRGB, red: 0.3, green: 0.3, blue: 0.4))
                     .lineLimit(1)
 
                 Text(rgbString)
                     .font(.system(size: 9, weight: .medium, design: .monospaced))
-                    .foregroundColor(.secondary)
+                    .foregroundColor(Color(.sRGB, red: 0.3, green: 0.3, blue: 0.4))
                     .lineLimit(1)
             }
         }
-        //.padding(8)
+        .padding(8)
         .background(
             RoundedRectangle(cornerRadius: 12)
                 .fill(Color.white)
