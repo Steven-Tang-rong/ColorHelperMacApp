@@ -21,31 +21,33 @@ struct ColorCardView: View {
     }
 
     var body: some View {
-        VStack(spacing: 6) {
-            RoundedRectangle(cornerRadius: 12)
-                .fill(colorItem.swiftUIColor)
-                .frame(height: 60)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 12)
-                        .stroke(Color.black.opacity(0.1), lineWidth: 1)
-                        .shadow(color: Color.black.opacity(0.2), radius: 2, x: 0, y: 1)
-                )
+        VStack(spacing: 0) {
+            UnevenRoundedRectangle(
+                topLeadingRadius: 24,
+                bottomLeadingRadius: 0,
+                bottomTrailingRadius: 0,
+                topTrailingRadius: 24
+            )
+            .fill(colorItem.swiftUIColor)
+            .frame(height: 60)
 
-            VStack(spacing: 2) {
-                Text(colorItem.hexCode.uppercased())
-                    .font(.system(size: 10, weight: .semibold, design: .monospaced))
-                    .foregroundColor(Color(.sRGB, red: 0.3, green: 0.3, blue: 0.4))
-                    .lineLimit(1)
-
-                Text(rgbString)
-                    .font(.system(size: 9, weight: .medium, design: .monospaced))
-                    .foregroundColor(Color(.sRGB, red: 0.3, green: 0.3, blue: 0.4))
-                    .lineLimit(1)
+            if colorItem.hexCode.replacingOccurrences(of: "#", with: "").uppercased() == "FFFFFF" {
+                Rectangle()
+                    .fill(Color.gray.opacity(0.2))
+                    .frame(height: 0.5)
             }
+
+
+            Text(colorItem.hexCode.uppercased())
+                .font(.system(size: 12, weight: .semibold, design: .monospaced))
+                .foregroundColor(Color(.sRGB, red: 0.3, green: 0.3, blue: 0.4))
+                .lineLimit(1)
+                .padding(.top, 8)
+                .padding(.bottom, 12)
+                .frame(maxWidth: .infinity)
         }
-        .padding(8)
         .background(
-            RoundedRectangle(cornerRadius: 12)
+            RoundedRectangle(cornerRadius: 24)
                 .fill(Color.white)
                 .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: 2)
         )

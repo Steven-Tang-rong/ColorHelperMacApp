@@ -17,13 +17,11 @@ let previewContainer: ModelContainer = {
         )
         let context = container.mainContext
 
-        // 建立 Sample Groups
         let designGroup = ColorGroup(name: "Design System")
         let brandGroup = ColorGroup(name: "Brand Colors")
         let uiGroup = ColorGroup(name: "UI Components")
         [designGroup, brandGroup, uiGroup].forEach { context.insert($0) }
 
-        // 建立 Sample Colors
         let sampleColors = [
             ColorItem(hexCode: "#FF6B6B", group: designGroup),
             ColorItem(hexCode: "#4ECDC4", group: designGroup),
